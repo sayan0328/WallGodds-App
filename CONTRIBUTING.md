@@ -15,7 +15,7 @@ Welcome to **WallGodds**, a community-driven platform for high-quality, categori
 ### 2. **Clone the Repository**
    After forking, clone the repository to your local machine:
    ```bash
-   git clone https://github.com/<your-username>/WallGodds.git
+   git clone https://github.com/<your-username>/WallGodds-App.git
    ```
    Replace `<your-username>` with your GitHub username.
 
@@ -80,7 +80,7 @@ We’ve uploaded the design prototype for WallGodds on Figma to help developers 
 ## 💡 Need Help?
 If you encounter challenges, here’s how you can reach out:
 - Open an issue with your query, and we’ll respond as soon as possible.
-- Join our community discussions for collaborative problem-solving [coming soon].
+- Join our community discussions for collaborative problem-solving.
 - Tag project maintainers in your pull request for personalized support.
 
 ---
