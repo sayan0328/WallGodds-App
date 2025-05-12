@@ -45,7 +45,7 @@ This stack ensures a seamless, scalable, and highly performant platform for user
 ## 🎨 Figma Design File  
 
 We’ve meticulously crafted a design prototype to guide the development process.  
-- **View-Only Link**: soon  
+- **View-Only Link**: https://www.figma.com/design/THGu1oo9n6phKUxp93IYuV/Wallgodds-Mobile-App?node-id=0-1&t=exDpFxAJcEgtmL9K-1  
 
 ### For Designers:  
 If you’re a designer and want to contribute directly:  
