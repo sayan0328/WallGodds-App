@@ -1,7 +1,7 @@
 # 🖼 WallGodds App: The Wallpaper Revolution, Now in Your Pocket
 
 <div align="center" width ="100%">
-  <img src="https://github.com/Parnab03/WallGodds/blob/main/WallGodds.png" alt="WallGodds Logo" />
+  <img src="https://github.com/sayan0328/WallGodds-App/blob/main/MOBILE%20APP%20BANNER.png" alt="WallGodds Banner" />
 </div>
 
 ---
