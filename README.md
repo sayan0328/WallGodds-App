@@ -3,6 +3,15 @@
 <div align="center" width ="100%">
   <img src="https://github.com/sayan0328/WallGodds-App/blob/main/MOBILE%20APP%20BANNER.png" alt="WallGodds Banner" />
 </div>
+<br>
+<div align="center">
+  <a href="https://github.com/Parnab03/WallGodds" style="text-decoration: none; margin-right: 20px;">
+    <img src="https://img.shields.io/badge/WallGodds%20Web-%237056F5?style=for-the-badge&logo=app&logoColor=blue" alt="WallGodds Web" style="border-radius: 7px;">
+  </a>
+   <a href="https://github.com/sayan0328/WallGodds-App" style="text-decoration: none; margin-right: 20px;">
+    <img src="https://img.shields.io/badge/WallGodds%20App-%23008FFF?style=for-the-badge&logo=web&logoColor=white" alt="WallGodds App" style="border-radius: 7px;">
+  </a>
+</div>
 
 ---
 
