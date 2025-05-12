@@ -27,13 +27,13 @@ The primary color palette for the website:
 |--------------------|--------------|-----------------------|  
 | Primary (White)                            | #FFFFFF     | Background |  
 | Secondary (Black)                          | #000000     | Text     |  
-| SidebarGradient (1st Color)                | #FDD7DE     | Background |  
-| SidebarGradient (2nd Color)                | #E6E1FD     | Secondary backgrounds |  
-| Main Primary BG (GRADIENT 1st color)       | #7056F5     | Background | 
-| Main Primary 1BG (GRADIENT 2nd color)      | #ABB3FE     | Background | 
-| Main Primary 2BG (GRADIENT 1st color)      | #F2AB93     | Background | 
-| Main Primary 2BG (GRADIENT 2nd color)      | #F76582     | Background | 
-| Nav Bar GRADIENT (1st color)               | #008FFF     | Nav Bar border |
+| Nav Bar Gradient select (1st Color)                | #FF5100    | Button Background |  
+| Nav Bar Gradient select (2nd Color)| #00A483     | Button Background |  
+| Nav Bar Gradient select (3rd Color)       | #4400FF| Button Background| 
+| Delete Your Account(Button)      | #FF5100    | Button Background | 
+| Log Out ( Button )     | #407BFF     | Button Background | 
+| Typo Color      | #6F6F6F    | Typo Color | 
+<!-- | Nav Bar GRADIENT (1st color)               | #008FFF     | Nav Bar border |
 | Nav Bar GRADIENT (2nd color)               | #FF9D00     | Nav Bar border |
 | Nav Bar GRADIENT (3rd color)               | #D90000     | Nav Bar border |
 | Nav Bar GRADIENT (4th color)               | #970088     | Nav Bar border |
@@ -41,26 +41,26 @@ The primary color palette for the website:
 | Button  (Solid)                            | #808080     | Download Button | 
 
 
-
+-->
 
 
 
 ###  **Typography**  
-- Logo Gruppo Font Size - 41.14 
-- Comfortaa Regular (Nav bar ---Font size 23.46)
-- Comfortaa Regular (Side bar ---Font size 23.46)
-- Comfortaa Regular (user name and download button) ---size 19.3  
-
+- Poppins Regular - (Submit - 32) 
+- Poppins Regular (Nav Bar - 27)
+- Poppins Regular (Pop up - 24)
+- Poppins Regular (Submit( Under the rectangle) - 20)  
+- Poppins Regular (Categories - 21.98)
 ---
 
 ## 📐 Layouts and Breakpoints  
-- Width  - 1920
-- Height - ∞ 
+- Width  - 719.39
+- Height - (∞ for scrollable) Default 1572 
 
 ###  **Grid System**  
 WallGodds uses a ∞ column grid system for layouts to ensure responsiveness.  
 
-###  **Breakpoints**  
+<!--###  **Breakpoints**  
 The website is designed to support the following screen sizes:  
 - Mobile:    Coming Soon
 - Tablet:    Coming Soon
