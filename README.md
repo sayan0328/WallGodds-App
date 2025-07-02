@@ -152,7 +152,7 @@ This project is licensed under the [MIT License](LICENSE.md). You’re free to u
 ## 🌐 Community Links  
 
 Stay connected with our growing community:  
-- **GitHub Discussions**: [Join the conversation](https://github.com/Parnab03/WallGodds/discussions)  
+- **GitHub Discussions**: [Join the conversation](https://github.com/sayan0328/WallGodds-App/discussions)  
 - **Discord Server**: [Connect with us](https://discord.gg/kTQ5KWANp8)  
 - **LinkedIn Page**: [Follow us](https://www.linkedin.com/company/wallgodds/posts/?feedView=all)
 ---
