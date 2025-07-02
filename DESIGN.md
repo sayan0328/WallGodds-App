@@ -2,7 +2,7 @@
 
 ## 📝 Have Suggestions?
 
-We value your input! If you have ideas or feedback about the design, feel free to share them in the [Discussions](https://github.com/Parnab03/WallGodds/discussions).
+We value your input! If you have ideas or feedback about the design, feel free to share them in the [Discussions](https://github.com/sayan0328/WallGodds-App/discussions).
 
 ---
 
