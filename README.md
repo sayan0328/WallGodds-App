@@ -19,18 +19,16 @@
 
 >  <a href="https://discord.gg/kTQ5KWANp8" ></a><img src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" width="16px" align-items="center"> **Make sure to join our [Discord Community](https://discord.gg/kTQ5KWANp8) for discussions on issues and PR consultations!**</a>
 
-<!-- ---
+---
 
 # 🌟 Open Source Program
 
 | Logo | Program | Description |
 |------|---------|-------------|
-| <img src="https://devfolio-prod.s3.ap-south-1.amazonaws.com/hackathons/ee8d75f60f0a4acf85238eabdea1bad3/assets/logo/273.png" alt="WOC 4.0 Logo" width="200px"> | [**Winter of Code 4.0**](https://winterofcode.tech/) | A 30-day open-source program by GDG On Campus IIIT Kalyani. Modeled after GSoC, it provides a platform for developers of all levels to contribute to impactful projects, enhance skills, and join a global open-source community. |
-| <img src="https://media.licdn.com/dms/image/v2/C560BAQEp7MUBpYE93g/company-logo_200_200/company-logo_200_200/0/1630672259441/jwoc_logo?e=2147483647&v=beta&t=wgkKrzLc-UxgSCnWShwkjn_zTXQnaa0_4cmbv4fN4PA" alt="JWOC season 6" width="200px"> | [**JWOC season 6**](https://jwoc-2025.vercel.app/projects) | JWoC offers a hands-on open-source learning experience, fostering a community of developers. Students explore selected projects during the Community Bonding Period and contribute during the coding phase. Winners are chosen based on the quality and quantity of their contributions. |
-| <img src="https://s2apertre.resourcio.in/Logo_primary.svg" alt="Apertre 2.0" width="200px"> | [**Apertre 2.0**](https://s2apertre.resourcio.in/projects) | Apertre Season 2, organized by Resourcio Community, is an open-source contribution event designed to enhance your technical skills. Whether you're a beginner or a pro, everyone is welcome to join and elevate their experience, portfolio, and career to new heights! |
+| <img src="https://miro.medium.com/v2/resize:fit:2400/1*ZfYWXN0zA6TqQQ7wGNJUOg.jpeg" alt="Gssoc" width="200px"> | [**GSSoC '25**](https://gssoc.girlscript.tech/) | GirlScript Summer of Code (GSSoC) is an open-source program that helps students enhance their coding skills by contributing to real-world projects. It provides mentorship, hands-on experience, and a platform to collaborate with developers across the globe. |
 
--->
---- 
+
+---
 
 ## 🔧 Tech Stack  
 
