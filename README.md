@@ -143,7 +143,7 @@ Our community is built on respect and collaboration. Please read our [Code of Co
 
 ## 📜 License  
 
-This project is licensed under the [MIT License](LICENSE.md). You’re free to use, modify, and distribute WallGodds, provided you give proper attribution.  
+This project is licensed under the [MIT License](LICENSE). You’re free to use, modify, and distribute WallGodds, provided you give proper attribution.  
 
 ---
 
