@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -36,20 +37,20 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavGraph.Companion.findStartDestination
-import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navArgument
 import com.example.wallgodds.navigation.CustomNavigationBar
 import com.example.wallgodds.navigation.Routes
 import com.example.wallgodds.navigation.listOfNavItems
+import com.example.wallgodds.screens.ProfilePageScreen
 import com.example.wallgodds.ui.theme.AppPadding
 import com.example.wallgodds.ui.theme.AppSize
 import com.example.wallgodds.ui.theme.WallGoddsTheme
-import com.example.wallgodds.utils.RandomWallpaperGrid
 import com.example.wallgodds.utils.LazyRowScrollbar
+import com.example.wallgodds.utils.RandomWallpaperGrid
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -90,13 +91,22 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier.padding(innerPadding)
                     ) {
                         composable(Routes.favorites_page) {
-                            HomePage()
+                            HomePage(onProfileClick = { navController.navigate(Routes.profile_page) })
                         }
                         composable(Routes.home_page) {
-                            HomePage()
+                            HomePage(onProfileClick = { navController.navigate(Routes.profile_page) })
                         }
                         composable(Routes.upload_page) {
-                            HomePage()
+                            HomePage(onProfileClick = { navController.navigate(Routes.profile_page) })
+                        }
+                        composable(Routes.profile_page) {
+                            ProfilePageScreen(
+                                onBackPressed = { navController.popBackStack() },
+                                onDarkModeClicked = {},
+                                onFeedbackClicked = {},
+                                onLogoutClicked = {},
+                                onDeleteAccountClicked = {}
+                            )
                         }
                     }
                 }
@@ -106,7 +116,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun HomePage() {
+fun HomePage(onProfileClick: () -> Unit = {}) {
 
     val wallpapers = List(50) {
         R.drawable.sample_wallpaper
@@ -134,7 +144,9 @@ fun HomePage() {
             Image(
                 painter = painterResource(R.drawable.profile_icon),
                 contentDescription = "Profile Icon",
-                modifier = Modifier.size(AppSize.IconMedium)
+                modifier = Modifier
+                    .size(AppSize.IconMedium)
+                    .clickable { onProfileClick() }
             )
         }
         LazyRow(

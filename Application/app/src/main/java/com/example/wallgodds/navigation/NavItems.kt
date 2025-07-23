@@ -23,5 +23,6 @@ val listOfNavItems: List<NavItems> = listOf(
         label = "Upload",
         icon = R.drawable.favorites_icon,
         route = Routes.upload_page
-    )
+    ),
+
 )
