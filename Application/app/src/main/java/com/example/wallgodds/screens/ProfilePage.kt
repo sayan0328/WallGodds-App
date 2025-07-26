@@ -50,18 +50,15 @@ fun ProfilePageScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(
-                Brush.linearGradient(
-                    colors = listOf(
-                        SoftLight,
-                        SoftPink,
-                        Lavender,
-                        SoftYellow,
-                        SoftBlush
-                    )
-                )
-            ),
     ) {
+        // *** Use this as the background for your page ***
+        Image(
+            painter = painterResource(id = R.drawable.background),
+            contentDescription = "Background Image",
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.matchParentSize()
+        )
+
         // Back Button
         IconButton(
             onClick = onBackPressed,

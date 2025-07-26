@@ -44,6 +44,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.wallgodds.navigation.CustomNavigationBar
 import com.example.wallgodds.navigation.Routes
 import com.example.wallgodds.navigation.listOfNavItems
+import com.example.wallgodds.screens.HomePage
 import com.example.wallgodds.screens.ProfilePageScreen
 import com.example.wallgodds.ui.theme.AppPadding
 import com.example.wallgodds.ui.theme.AppSize
@@ -112,102 +113,6 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-    }
-}
-
-@Composable
-fun HomePage(onProfileClick: () -> Unit = {}) {
-
-    val wallpapers = List(50) {
-        R.drawable.sample_wallpaper
-    }
-
-    val listState = rememberLazyListState()
-
-    Column(
-        modifier = Modifier
-            .fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = AppPadding.MainContentPadding, vertical = AppPadding.Medium),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Image(
-                painter = painterResource(R.drawable.wallgodds_icon),
-                contentDescription = "WallGodds Icon",
-                modifier = Modifier.size(AppSize.IconMedium)
-            )
-            Image(
-                painter = painterResource(R.drawable.profile_icon),
-                contentDescription = "Profile Icon",
-                modifier = Modifier
-                    .size(AppSize.IconMedium)
-                    .clickable { onProfileClick() }
-            )
-        }
-        LazyRow(
-            state = listState,
-            contentPadding = PaddingValues(horizontal = AppPadding.MainContentPadding),
-            horizontalArrangement = Arrangement.spacedBy(AppPadding.PaddingBetweenCategories)
-        ) {
-            listOf<String>(
-                "Abstract",
-                "Nature",
-                "Anime",
-                "Art",
-                "Movies",
-                "Vehicles",
-                "Sports",
-                "Games",
-                "Travel",
-                "Spiritual",
-                "Music",
-                "AIGen",
-            ).forEach {
-                item {
-                    Box(
-                        modifier = Modifier
-                            .height(AppSize.CategoryPreview)
-                            .aspectRatio(3f / 1f)
-                            .clip(RoundedCornerShape(AppSize.LowCornerRadius))
-                            .background(Color.White),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Image(
-                            painter = painterResource(R.drawable.category_abstract),
-                            contentDescription = "Book Cover",
-                            contentScale = ContentScale.Crop,
-                            modifier = Modifier.fillMaxSize()
-                        )
-                        Text(
-                            text = it,
-                            color = Color.White,
-                            fontSize = AppSize.FontSizeSmall,
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .background(Color.Black.copy(alpha = 0.5f)),
-                            textAlign = TextAlign.Center
-                        )
-                    }
-                }
-            }
-        }
-        LazyRowScrollbar(
-            listState = listState,
-            indicatorColor = Color.Black,
-            indicatorHeight = AppSize.indicatorHeight,
-            indicatorWidth = AppSize.indicatorWidth,
-            trackColor = Color.Gray,
-            trackHeight = AppSize.trackHeight,
-            trackWidth = AppSize.trackWidth,
-            cornerRadius = AppSize.HighCornerRadius,
-            verticalPadding = AppPadding.Medium
-        )
-        RandomWallpaperGrid(wallpapers = wallpapers)
     }
 }
 
