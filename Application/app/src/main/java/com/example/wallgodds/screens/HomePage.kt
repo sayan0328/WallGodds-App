@@ -2,18 +2,14 @@ package com.example.wallgodds.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -26,14 +22,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.navigation.NavController
 import com.example.wallgodds.R
 import com.example.wallgodds.ui.theme.AppPadding
 import com.example.wallgodds.ui.theme.AppSize
 import com.example.wallgodds.utils.LazyRowScrollbar
 import com.example.wallgodds.utils.RandomWallpaperGrid
+import com.example.wallgodds.utils.TopAppBar
 
 @Composable
-fun HomePage(onProfileClick: () -> Unit = {}) {
+fun HomePage(navController: NavController) {
 
     val wallpapers = List(50) {
         R.drawable.sample_wallpaper
@@ -57,26 +55,10 @@ fun HomePage(onProfileClick: () -> Unit = {}) {
                 .fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = AppPadding.MainContentPadding, vertical = AppPadding.Medium),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Image(
-                    painter = painterResource(R.drawable.wallgodds_icon),
-                    contentDescription = "WallGodds Icon",
-                    modifier = Modifier.size(AppSize.IconMedium)
-                )
-                Image(
-                    painter = painterResource(R.drawable.profile_icon),
-                    contentDescription = "Profile Icon",
-                    modifier = Modifier
-                        .size(AppSize.IconMedium)
-                        .clickable { onProfileClick() }
-                )
-            }
+            TopAppBar(
+                modifier = Modifier.padding(horizontal = AppPadding.MainContentPadding),
+                navController = navController
+            )
             LazyRow(
                 state = listState,
                 contentPadding = PaddingValues(horizontal = AppPadding.MainContentPadding),
