@@ -23,6 +23,7 @@ import com.example.wallgodds.navigation.listOfNavItems
 import com.example.wallgodds.screens.FavoritesPageScreen
 import com.example.wallgodds.screens.HomePage
 import com.example.wallgodds.screens.ProfilePageScreen
+import com.example.wallgodds.screens.UploadPage
 import com.example.wallgodds.ui.theme.WallGoddsTheme
 
 
@@ -71,7 +72,7 @@ class MainActivity : ComponentActivity() {
                             HomePage(navController)
                         }
                         composable(Routes.upload_page) {
-                            HomePage(navController)
+                            UploadPage(navController)
                         }
                         composable(Routes.profile_page) {
                             ProfilePageScreen(
