@@ -15,3 +15,5 @@ val SoftPink = Color(0xFFFFEDEA)
 val Lavender = Color(0xFFFFCBF2)
 val SoftYellow = Color(0xFFFFF4CF)
 val SoftBlush = Color(0xFFFEF6FB)
+
+val Grey = Color(0xFF353935)
