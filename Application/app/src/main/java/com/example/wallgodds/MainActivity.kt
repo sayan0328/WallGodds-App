@@ -13,15 +13,18 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.wallgodds.navigation.CustomNavigationBar
 import com.example.wallgodds.navigation.Routes
+import com.example.wallgodds.navigation.Routes.expanded_wallpaper_page
 import com.example.wallgodds.navigation.listOfNavItems
+import com.example.wallgodds.screens.ExpandedWallpaperPage
 import com.example.wallgodds.screens.FavoritesPageScreen
-import com.example.wallgodds.screens.FeedbackPage
 import com.example.wallgodds.screens.HomePage
 import com.example.wallgodds.screens.ProfilePageScreen
 import com.example.wallgodds.screens.UploadPage
@@ -73,19 +76,26 @@ class MainActivity : ComponentActivity() {
                             HomePage(navController)
                         }
                         composable(Routes.upload_page) {
-                            UploadPage(navController)                      }
+                            UploadPage(navController)
+                        }
                         composable(Routes.profile_page) {
                             ProfilePageScreen(
                                 onBackPressed = { navController.popBackStack() },
                                 onDarkModeClicked = {},
-                                onFeedbackClicked = { navController.navigate(Routes.feedback_page) },
+                                onFeedbackClicked = {},
                                 onLogoutClicked = {},
                                 onDeleteAccountClicked = {}
                             )
                         }
-                        composable(Routes.feedback_page) {
-                            FeedbackPage(navController)
+                        composable(
+                            route = Routes.expanded_wallpaper_page,
+                            arguments = listOf(navArgument("wallpaperId") { type = NavType.IntType })
+                        ) { backStackEntry ->
+                            val wallpaperId = backStackEntry.arguments?.getInt("wallpaperId") ?: return@composable
+                            ExpandedWallpaperPage(wallpaperId = wallpaperId, navController = navController)
                         }
+
+
                     }
                 }
             }

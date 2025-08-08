@@ -6,5 +6,7 @@ object Routes {
     var login_page = "login_page"
     var profile_page = "profile_page"
     var upload_page = "upload_page"
-    var feedback_page = "feedback_page"
+    var expanded_wallpaper_page = "expanded/{wallpaperId}"
+
+
 }

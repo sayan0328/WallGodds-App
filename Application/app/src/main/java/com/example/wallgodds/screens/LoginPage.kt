@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.wallgodds.R
 import com.example.wallgodds.ui.theme.AppPadding
-import com.example.wallgodds.ui.theme.Grey
+import com.example.wallgodds.ui.theme.Gray
 
 @Composable
 fun LoginPage() {
@@ -70,7 +70,7 @@ fun LoginPage() {
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .padding(bottom = 150.dp),
-            colors = ButtonDefaults.buttonColors(containerColor = Grey),
+            colors = ButtonDefaults.buttonColors(containerColor = Gray),
             contentPadding = PaddingValues(horizontal = AppPadding.Medium, vertical = AppPadding.Small)
         ) {
             Row(
