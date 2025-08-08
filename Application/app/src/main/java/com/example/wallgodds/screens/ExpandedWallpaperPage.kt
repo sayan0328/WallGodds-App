@@ -17,12 +17,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -31,7 +33,7 @@ import androidx.navigation.NavController
 import com.example.wallgodds.R
 import com.example.wallgodds.ui.theme.AppPadding
 import com.example.wallgodds.ui.theme.AppSize
-import com.example.wallgodds.ui.theme.BackgroundDark
+import com.example.wallgodds.ui.theme.BackgroundIcon
 import com.example.wallgodds.utils.TopAppBar
 
 @Composable
@@ -59,12 +61,12 @@ fun ExpandedWallpaperPage(
 			modifier = Modifier
 				.fillMaxSize()
 				.padding(
-					top = 90.dp,
+					top = 105.dp,
 					start = AppPadding.MainContentPadding,
 					end = AppPadding.MainContentPadding,
-					bottom = AppPadding.MainContentPadding
+
 				),
-			verticalArrangement = Arrangement.spacedBy(AppPadding.Small), // Keep this for proper spacing
+			verticalArrangement = Arrangement.SpaceBetween, // Keep this for proper spacing
 			horizontalAlignment = Alignment.CenterHorizontally
 		) {
 
@@ -72,20 +74,22 @@ fun ExpandedWallpaperPage(
 				painter = painterResource(id = wallpaperId),
 				contentDescription = "Selected wallpaper",
 				modifier = Modifier
+					.padding(bottom = 10.dp)
 					.fillMaxWidth()
-					.aspectRatio(0.7f)
+					.aspectRatio(0.65f)
 					.clip(RoundedCornerShape(AppSize.HighCornerRadius)),
 				contentScale = ContentScale.Crop
 			)
 
-			Spacer(modifier = Modifier.height(AppPadding.Small))
+			Spacer(modifier = Modifier.height(AppPadding.Smallest))
 
 
 			Row(
 				modifier = Modifier
 					.fillMaxWidth()
 					.padding(top = AppPadding.Small, start = AppPadding.Large,end = AppPadding.Large, bottom = AppPadding.Large),
-				horizontalArrangement = Arrangement.SpaceEvenly,
+				horizontalArrangement = Arrangement.spacedBy(AppPadding.Medium, Alignment.CenterHorizontally),
+
 				verticalAlignment = Alignment.CenterVertically
 			) {
 
@@ -94,7 +98,8 @@ fun ExpandedWallpaperPage(
 					label = "Back",
 					onClick = {
 						navController.popBackStack()
-					}
+					},
+//
 				)
 
 				ActionButton(
@@ -118,35 +123,37 @@ fun ExpandedWallpaperPage(
 private fun ActionButton(
 	iconRes: Int,
 	label: String,
-	onClick: () -> Unit
+	onClick: () -> Unit,
+	modifier: Modifier = Modifier
 ) {
 	Column(
 		horizontalAlignment = Alignment.CenterHorizontally,
+		verticalArrangement = Arrangement.spacedBy(AppPadding.Small),
 		modifier = Modifier
 			.clickable { onClick() }
 			.padding(AppPadding.Smallest)
 	) {
 		Box(
 			modifier = Modifier
-				.size(64.dp)
+				.size(58.dp)
 				.clip(CircleShape)
+
 				.background(
-					color = BackgroundDark
+					color = BackgroundIcon
 				),
 			contentAlignment = Alignment.Center
 		) {
-			Image(
+			Icon(
 				painter = painterResource(id = iconRes),
 				contentDescription = label,
-				modifier = Modifier.size(AppSize.IconMedium)
+				tint = Color.White,
+				modifier = Modifier.size(AppSize.IconSmall)
 			)
 		}
 
-		Spacer(modifier = Modifier.height(4.dp))
-
 		Text(
 			text = label,
-			color = BackgroundDark,
+			color = BackgroundIcon,
 			style = MaterialTheme.typography.bodyMedium
 		)
 	}

@@ -13,13 +13,17 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.wallgodds.navigation.CustomNavigationBar
 import com.example.wallgodds.navigation.Routes
+import com.example.wallgodds.navigation.Routes.expanded_wallpaper_page
 import com.example.wallgodds.navigation.listOfNavItems
+import com.example.wallgodds.screens.ExpandedWallpaperPage
 import com.example.wallgodds.screens.FavoritesPageScreen
 import com.example.wallgodds.screens.HomePage
 import com.example.wallgodds.screens.ProfilePageScreen
@@ -83,6 +87,15 @@ class MainActivity : ComponentActivity() {
                                 onDeleteAccountClicked = {}
                             )
                         }
+                        composable(
+                            route = Routes.expanded_wallpaper_page,
+                            arguments = listOf(navArgument("wallpaperId") { type = NavType.IntType })
+                        ) { backStackEntry ->
+                            val wallpaperId = backStackEntry.arguments?.getInt("wallpaperId") ?: return@composable
+                            ExpandedWallpaperPage(wallpaperId = wallpaperId, navController = navController)
+                        }
+
+
                     }
                 }
             }
