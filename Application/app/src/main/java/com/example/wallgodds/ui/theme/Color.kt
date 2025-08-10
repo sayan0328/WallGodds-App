@@ -21,3 +21,11 @@ val Gray = Color(0xFF808080)
 val Blue = Color(0xFF407BFF)
 val EnabledButtonColor = Color(0xFF407BFF)
 val DisabledButtonColor = Color(0xFFB0C4FF)
+
+// ✅ ADDED: Colors from the Bug Report screen for consistency
+val TextBlack = Color.Black
+val SurfaceWhite = Color.White
+val AccentBlue = Color(0xFF407BFF) // Same as Blue
+val OutlineGray = Color(0xFFDCDCDC) // A light gray for borders
+val BorderGray = Color(0xFFDCDCDC)  // Alias for OutlineGray
+val BackgroundPink = Color(0xFFFDEEF4) // Soft pink background from original screen
