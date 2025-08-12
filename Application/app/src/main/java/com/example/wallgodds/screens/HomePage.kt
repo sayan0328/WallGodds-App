@@ -36,6 +36,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.wallgodds.R
+import com.example.wallgodds.navigation.Routes
 import com.example.wallgodds.ui.theme.AppPadding
 import com.example.wallgodds.ui.theme.AppSize
 import com.example.wallgodds.utils.LazyRowScrollbar
@@ -159,7 +160,14 @@ fun HomePage(navController: NavController) {
                 cornerRadius = AppSize.HighCornerRadius,
                 verticalPadding = AppPadding.Medium
             )
-            RandomWallpaperGrid(wallpapers = wallpapers)
+            RandomWallpaperGrid(
+                wallpapers = wallpapers,
+                onWallpaperClick = { imageResId ->
+                    // Navigate to expanded wallpaper screen
+                    navController.navigate("${Routes.expanded_wallpaper_page.replace("{wallpaperId}", imageResId.toString())}")
+                }
+            )
+
         }
 
         SnackbarHost(

@@ -1,6 +1,7 @@
 package com.example.wallgodds.utils
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -20,7 +21,9 @@ import com.example.wallgodds.ui.theme.AppPadding
 import com.example.wallgodds.ui.theme.AppSize
 
 @Composable
-fun RandomWallpaperGrid(wallpapers: List<Int>) {
+fun RandomWallpaperGrid(
+    wallpapers: List<Int>,
+    onWallpaperClick: (Int) -> Unit) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -32,17 +35,19 @@ fun RandomWallpaperGrid(wallpapers: List<Int>) {
             val images = chunkedImages[index]
             val layoutType = index % 4
             when(layoutType) {
-                0 -> BigOneOnTheLeft(images)
-                1 -> ThreeInRow(images)
-                2 -> BigOneOnTheRight(images)
-                else -> ThreeInRow(images)
+                0 -> BigOneOnTheLeft(images,onWallpaperClick)
+                1 -> ThreeInRow(images,onWallpaperClick)
+                2 -> BigOneOnTheRight(images,onWallpaperClick)
+                else -> ThreeInRow(images,onWallpaperClick)
             }
         }
     }
 }
 
 @Composable
-fun BigOneOnTheLeft(images: List<Int>) {
+fun BigOneOnTheLeft(
+    images: List<Int>,
+    onWallpaperClick: (Int) -> Unit) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(AppPadding.Small)
@@ -52,6 +57,7 @@ fun BigOneOnTheLeft(images: List<Int>) {
                 painter = painterResource(id = it),
                 contentDescription = null,
                 modifier = Modifier
+                    .clickable { onWallpaperClick(it) }
                     .weight(2f)
                     .aspectRatio(9f / 16f)
                     .clip(RoundedCornerShape(AppSize.WallpaperRoundedCorner))
@@ -68,6 +74,7 @@ fun BigOneOnTheLeft(images: List<Int>) {
                     painter = painterResource(id = it),
                     contentDescription = null,
                     modifier = Modifier
+                        .clickable { onWallpaperClick(it) }
                         .aspectRatio(9f / 16f)
                         .clip(RoundedCornerShape(AppSize.WallpaperRoundedCorner)),
                     contentScale = ContentScale.Fit
@@ -78,6 +85,7 @@ fun BigOneOnTheLeft(images: List<Int>) {
                     painter = painterResource(id = it),
                     contentDescription = null,
                     modifier = Modifier
+                        .clickable { onWallpaperClick(it) }
                         .aspectRatio(9f / 16f)
                         .clip(RoundedCornerShape(AppSize.WallpaperRoundedCorner)),
                     contentScale = ContentScale.Fit
@@ -88,7 +96,9 @@ fun BigOneOnTheLeft(images: List<Int>) {
 }
 
 @Composable
-fun ThreeInRow(images: List<Int>) {
+fun ThreeInRow(
+    images: List<Int>,
+    onWallpaperClick: (Int) -> Unit) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(AppPadding.Small)
@@ -98,6 +108,7 @@ fun ThreeInRow(images: List<Int>) {
                 painter = painterResource(id = image),
                 contentDescription = null,
                 modifier = Modifier
+                    .clickable { onWallpaperClick(image) }
                     .weight(1f)
                     .aspectRatio(9f / 16f)
                     .clip(RoundedCornerShape(AppSize.WallpaperRoundedCorner)),
@@ -109,7 +120,9 @@ fun ThreeInRow(images: List<Int>) {
 }
 
 @Composable
-fun BigOneOnTheRight(images: List<Int>) {
+fun BigOneOnTheRight(
+    images: List<Int>,
+    onWallpaperClick: (Int) -> Unit) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(AppPadding.Small)
@@ -123,6 +136,7 @@ fun BigOneOnTheRight(images: List<Int>) {
                     painter = painterResource(id = it),
                     contentDescription = null,
                     modifier = Modifier
+                        .clickable { onWallpaperClick(it) }
                         .aspectRatio(9f / 16f)
                         .clip(RoundedCornerShape(AppSize.WallpaperRoundedCorner)),
                     contentScale = ContentScale.Fit
@@ -133,6 +147,7 @@ fun BigOneOnTheRight(images: List<Int>) {
                     painter = painterResource(id = it),
                     contentDescription = null,
                     modifier = Modifier
+                        .clickable { onWallpaperClick(it) }
                         .aspectRatio(9f / 16f)
                         .clip(RoundedCornerShape(AppSize.WallpaperRoundedCorner)),
                     contentScale = ContentScale.Fit
@@ -144,6 +159,7 @@ fun BigOneOnTheRight(images: List<Int>) {
                 painter = painterResource(id = it),
                 contentDescription = null,
                 modifier = Modifier
+                    .clickable { onWallpaperClick(it) }
                     .weight(2f)
                     .aspectRatio(9f / 16f)
                     .clip(RoundedCornerShape(AppSize.WallpaperRoundedCorner))
