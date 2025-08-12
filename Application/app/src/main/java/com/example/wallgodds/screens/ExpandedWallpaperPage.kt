@@ -91,7 +91,7 @@ fun ExpandedWallpaperPage(
 			) {
 
 				ActionButton(
-					iconRes = R.drawable.vector,
+					iconRes = R.drawable.back_button_icon,
 					label = "Back",
 					onClick = {
 						navController.popBackStack()
@@ -100,14 +100,14 @@ fun ExpandedWallpaperPage(
 				)
 
 				ActionButton(
-					iconRes = R.drawable.vector_1_,
+					iconRes = R.drawable.download_button_icon,
 					label = "Download",
 					onClick = {}
 				)
 
 
 				ActionButton(
-					iconRes = R.drawable.vector_2_,
+					iconRes = R.drawable.set_button_icon,
 					label = "Set",
 					onClick = {}
 				)
