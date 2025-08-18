@@ -28,3 +28,6 @@ val AccentBlue = Color(0xFF407BFF) // Same as Blue
 val OutlineGray = Color(0xFFDCDCDC) // A light gray for borders
 val BorderGray = Color(0xFFDCDCDC)  // Alias for OutlineGray
 val BackgroundPink = Color(0xFFFDEEF4) // Soft pink background from original screen
+
+// Colors for hero section
+val AppBarColor = Color(0xFFE7E7E7)

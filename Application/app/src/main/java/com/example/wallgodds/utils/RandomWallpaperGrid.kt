@@ -63,21 +63,22 @@ fun RandomWallpaperGrid(
 @Composable
 fun HeroSection() {
     val context = LocalContext.current
-    Box(contentAlignment = Alignment.Center){
+    Box(contentAlignment = Alignment.Center,
+        modifier = Modifier
+            .clickable {
+                val intent = Intent(
+                    Intent.ACTION_VIEW,
+                    "https://wallgodds.vercel.app/".toUri()
+                )
+                context.startActivity(intent)
+            }){
         Image(
             painter = painterResource(R.drawable.hero_box),
             contentDescription = null,
             modifier = Modifier
-                .clickable {
-                    val intent = Intent(
-                        Intent.ACTION_VIEW,
-                        "https://wallgodds.vercel.app/".toUri()
-                    )
-                    context.startActivity(intent)
-                }
                 .clip(RoundedCornerShape(AppSize.MediumCornerRadius))
                 .border(
-                    width = 1.dp, color = Color.LightGray,
+                    width = 0.5.dp, color = Color.LightGray,
                     RoundedCornerShape(AppSize.MediumCornerRadius)
                 )
                 .aspectRatio(2.5f / 1f),

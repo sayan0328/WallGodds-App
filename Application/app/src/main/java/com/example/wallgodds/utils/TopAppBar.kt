@@ -27,12 +27,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.wallgodds.R
 import com.example.wallgodds.navigation.Routes
+import com.example.wallgodds.ui.theme.AppBarColor
 import com.example.wallgodds.ui.theme.AppSize
-import com.example.wallgodds.ui.theme.SoftPink
 
 @Composable
 fun TopAppBar(
@@ -43,13 +45,13 @@ fun TopAppBar(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(18.dp),
+            .padding(bottom = 20.dp, top = 16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Row(
             modifier = Modifier
                 .weight(1f)
-                .background(color = SoftPink, RoundedCornerShape(50))
+                .background(color = AppBarColor, RoundedCornerShape(50))
                 .padding(end = 8.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -72,7 +74,8 @@ fun TopAppBar(
                                 "Favourite Wallpapers, categories, etc",
                                 color = Color.Black.copy(0.5f),
                                 maxLines = 1,
-                                fontSize = AppSize.searchBarText
+                                fontSize = AppSize.searchBarText,
+                                fontFamily = FontFamily(Font(R.font.comfortaa))
                             )
                         }
                         innerTextField()
@@ -101,7 +104,8 @@ fun TopAppBar(
         Image(
             painter = painterResource(R.drawable.profile_icon),
             contentDescription = null,
-            modifier = Modifier.size(AppSize.IconMedium)
+            modifier = Modifier
+                .size(AppSize.IconMedium)
                 .clickable {
                     navController.navigate(Routes.profile_page)
                 }

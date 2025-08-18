@@ -98,10 +98,10 @@ fun HomePage(navController: NavController) {
                 .fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Column(modifier = Modifier.padding(horizontal = AppPadding.PaddingBetweenCategories)) {
-                TopAppBar(
-                    navController = navController
-                )
+            Column(modifier = Modifier
+                .padding(horizontal = AppPadding.MainContentPadding)
+            ) {
+                TopAppBar(navController = navController)
             }
             LazyRow(
                 state = listState,
