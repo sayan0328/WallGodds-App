@@ -20,6 +20,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -244,16 +245,13 @@ fun WallpaperSetPopup(
 				style = TextStyle(
 					fontFamily = FontFamily(Font(R.font.poppins_medium)),
 					fontWeight = FontWeight.Medium,
-					fontSize = 16.sp,
+					fontSize = 18.sp,
 					textAlign = TextAlign.Center
 				),
 				color = Color(0xFF29323B)
 			)
 
-			Column(
-				modifier = Modifier.fillMaxWidth(0.8f),
-				horizontalAlignment = Alignment.CenterHorizontally
-			) {
+			Column {
 				PopupOption(
 					icon = R.drawable.ic_wallpaper_home,
 					label = "Set on home screen",
@@ -298,7 +296,7 @@ fun WallpaperSetPopup(
 fun PopupOption(icon: Int, label: String, onClick: () -> Unit) {
 	Row(
 		modifier = Modifier
-			.fillMaxWidth()
+			.wrapContentWidth(Alignment.CenterHorizontally)
 			.clickable { onClick() }
 			.padding(vertical = 8.dp, horizontal = 8.dp),
 		verticalAlignment = Alignment.CenterVertically
@@ -307,7 +305,7 @@ fun PopupOption(icon: Int, label: String, onClick: () -> Unit) {
 			painter = painterResource(id = icon),
 			contentDescription = label,
 			tint = BackgroundIcon,
-			modifier = Modifier.size(35.dp)
+			modifier = Modifier.size(30.dp)
 		)
 		Spacer(modifier = Modifier.width(24.dp))
 		Text(
@@ -315,8 +313,8 @@ fun PopupOption(icon: Int, label: String, onClick: () -> Unit) {
 			style = TextStyle(
 				fontFamily = FontFamily(Font(R.font.poppins_regular)),
 				fontWeight = FontWeight.ExtraLight,
-				fontSize = 13.sp,
-				textAlign = TextAlign.End
+				fontSize = 14.sp,
+				textAlign = TextAlign.Start
 			),
 			color = Color(0xFF29323B)
 		)
