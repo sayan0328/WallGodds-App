@@ -35,9 +35,9 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.wallgodds.R
 import com.example.wallgodds.navigation.Routes
-import com.example.wallgodds.ui.theme.AppBarColor
 import com.example.wallgodds.ui.theme.AppPadding
 import com.example.wallgodds.ui.theme.AppSize
+import com.example.wallgodds.ui.theme.SoftPink
 
 @Composable
 fun TopAppBar(
@@ -56,7 +56,7 @@ fun TopAppBar(
             Row(
                 modifier = Modifier
                     .weight(1f)
-                    .background(color = AppBarColor, RoundedCornerShape(50))
+                    .background(color = SoftPink, RoundedCornerShape(50))
                     .padding(end = 8.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
