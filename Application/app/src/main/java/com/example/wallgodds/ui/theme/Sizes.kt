@@ -15,16 +15,25 @@ object AppSize {
 
     // CornerRadii
     val LowCornerRadius = 8.dp // e.g. Category previews
+    val MediumCornerRadius = 16.dp // Hero
     val HighCornerRadius = 24.dp // e.g. Slider, Nav bar
     val WallpaperRoundedCorner = 20.dp // e.g. Wallpaper
 
     // FontSizes
     val FontSizeSmall = 14.sp
     val FontSizeMedium = 18.sp
+    val FontSizeExtraLarge = 48.sp
 
+    // FontSize for Hero Section
+    val HeroFontSizeMedium = 15.sp
+    val HeroFontSizeSmall = 12.sp
     // LazyRow Scrollbar
     val indicatorHeight = 8.dp
     val indicatorWidth = 16.dp
     val trackHeight = 2.dp
     val trackWidth = 120.dp
+
+    // TopAppBar FontSize
+    val placeholderText = 16.sp
+    val searchBarText = 12.sp
 }

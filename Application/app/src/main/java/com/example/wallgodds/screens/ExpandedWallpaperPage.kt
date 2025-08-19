@@ -49,10 +49,11 @@ fun ExpandedWallpaperPage(
 			modifier = Modifier.fillMaxSize()
 		)
 
-		TopAppBar(
-			modifier = Modifier.padding(horizontal = AppPadding.MainContentPadding),
-			navController = navController
-		)
+		Column(modifier = Modifier.padding(horizontal = AppPadding.MainContentPadding)) {
+			TopAppBar(
+				navController = navController
+			)
+		}
 
 		Column(
 			modifier = Modifier
