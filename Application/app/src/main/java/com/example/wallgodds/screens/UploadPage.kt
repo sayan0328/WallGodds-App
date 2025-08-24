@@ -87,11 +87,7 @@ fun UploadPage(navController: NavController) {
 						.clip(RoundedCornerShape(AppSize.HighCornerRadius))
 						.background(Color.White)
 						.clickable {
-							navController.navigate(Routes.home_page) {
-								popUpTo(Routes.upload_page) {
-									inclusive = true
-								}
-							}
+							navController.navigate(Routes.upload_popup_page)
 						}
 						.border(1.dp, Color.Gray, RoundedCornerShape(AppSize.HighCornerRadius)),
 					contentAlignment = Alignment.Center

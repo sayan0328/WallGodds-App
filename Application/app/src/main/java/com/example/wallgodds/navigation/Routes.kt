@@ -9,5 +9,6 @@ object Routes {
     var feedback_page = "feedback_page"
     var expanded_wallpaper_page = "expanded/{wallpaperId}"
 
+    var upload_popup_page = "upload_popup_page"
 
 }
