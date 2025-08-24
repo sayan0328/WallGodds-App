@@ -27,6 +27,7 @@ import com.example.wallgodds.screens.ExpandedWallpaperPage
 import com.example.wallgodds.screens.FavoritesPageScreen
 import com.example.wallgodds.screens.FeedbackPage
 import com.example.wallgodds.screens.HomePage
+import com.example.wallgodds.screens.PopUpPage
 import com.example.wallgodds.screens.ProfilePageScreen
 import com.example.wallgodds.screens.UploadPage
 import com.example.wallgodds.ui.theme.WallGoddsTheme
@@ -98,8 +99,9 @@ class MainActivity : ComponentActivity() {
                             val wallpaperId = backStackEntry.arguments?.getInt("wallpaperId") ?: return@composable
                             ExpandedWallpaperPage(wallpaperId = wallpaperId, navController = navController)
                         }
-
-
+                        composable(Routes.upload_popup_page) {
+                            PopUpPage(navController = navController)
+                        }
                     }
                 }
             }
