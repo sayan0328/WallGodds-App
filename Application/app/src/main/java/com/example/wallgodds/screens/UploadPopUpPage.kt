@@ -310,7 +310,7 @@ fun PopUpPage(navController: NavController) {
                                     }
                                 }
 
-                                Spacer(modifier = Modifier.height(8.dp))
+                                Spacer(modifier = Modifier.height(4.dp))
 
                                 // Wallpaper Name Field
                                 Column(modifier = Modifier.fillMaxWidth()) {
@@ -322,7 +322,7 @@ fun PopUpPage(navController: NavController) {
                                         color = Color.Black,
                                         textAlign = TextAlign.Center
                                     )
-                                    Spacer(modifier = Modifier.height(8.dp))
+                                    Spacer(modifier = Modifier.height(4.dp))
                                     Box(
                                         modifier = Modifier
                                             .fillMaxWidth()
@@ -355,7 +355,7 @@ fun PopUpPage(navController: NavController) {
                                     }
                                 }
 
-                                Spacer(modifier = Modifier.height(8.dp))
+                                Spacer(modifier = Modifier.height(4.dp))
 
                                 // Dropdown Menu
                                 Column(modifier = Modifier.fillMaxWidth()) {
@@ -367,7 +367,7 @@ fun PopUpPage(navController: NavController) {
                                         color = Color.Black,
                                         textAlign = TextAlign.Center
                                     )
-                                    Spacer(modifier = Modifier.height(8.dp))
+                                    Spacer(modifier = Modifier.height(4.dp))
 
                                     ExposedDropdownMenuBox(
                                         expanded = expanded,
@@ -437,7 +437,7 @@ fun PopUpPage(navController: NavController) {
                                     }
                                 }
 
-                                Spacer(modifier = Modifier.height(30.dp))
+                                Spacer(modifier = Modifier.height(24.dp))
 
                                 // Submit Button
                                 Button(
