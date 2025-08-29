@@ -1,15 +1,25 @@
 package com.example.wallgodds.screens
 
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.expandIn
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.shrinkOut
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.combinedClickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
@@ -20,18 +30,26 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -44,6 +62,7 @@ import com.example.wallgodds.ui.theme.AppSize
 import com.example.wallgodds.utils.TopAppBar
 
 // Upload Page
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun UploadPage(navController: NavController) {
 	val availableWallpapers = listOf(
@@ -52,6 +71,8 @@ fun UploadPage(navController: NavController) {
 		R.drawable.wallpaper4,
 		R.drawable.wallpaper5
 	)
+
+	val hapticFeedback = LocalHapticFeedback.current
 
 	val imageList = remember {
 		mutableStateOf(List(30) { index -> availableWallpapers[index % availableWallpapers.size] })
@@ -122,6 +143,7 @@ fun UploadPage(navController: NavController) {
 						.fillMaxWidth()
 						.height(600.dp)
 				) {
+					var selectedIndex by remember { mutableIntStateOf(-1) }
 					LazyVerticalGrid(
 						columns = GridCells.Fixed(3),
 						userScrollEnabled = false,
@@ -129,15 +151,63 @@ fun UploadPage(navController: NavController) {
 						horizontalArrangement = Arrangement.spacedBy(AppPadding.Small),
 						modifier = Modifier.fillMaxSize()
 					) {
-						items(imageList.value) { imageRes ->
-							Image(
-								painter = painterResource(imageRes),
-								contentDescription = "Wallpaper",
-								contentScale = ContentScale.Crop,
+						itemsIndexed(imageList.value) { index, imageRes ->
+							Box(
 								modifier = Modifier
-									.aspectRatio(9f / 16f)
-									.clip(RoundedCornerShape(AppSize.WallpaperRoundedCorner))
-							)
+									.combinedClickable(
+										interactionSource = remember { MutableInteractionSource() },
+										indication = null,
+										onClick = {
+											selectedIndex = -1
+										},
+										onLongClick = {
+											hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
+											selectedIndex = if (selectedIndex != index) {
+												index
+											} else -1
+										})
+							) {
+								Image(
+									painter = painterResource(imageRes),
+									contentDescription = "Wallpaper",
+									contentScale = ContentScale.Crop,
+									colorFilter = if (selectedIndex == index) ColorFilter.tint(
+										Color.Black.copy(
+											alpha = 0.3f
+										), blendMode = BlendMode.Darken
+									) else null,
+									modifier = Modifier
+										.aspectRatio(9f / 16f)
+										.clip(RoundedCornerShape(AppSize.WallpaperRoundedCorner))
+								)
+								AnimatedVisibility(
+									modifier = Modifier.align(Alignment.TopEnd),
+									enter = fadeIn(tween(durationMillis = 300)) + expandIn(
+										expandFrom = Alignment.BottomStart,
+										animationSpec = spring(
+											dampingRatio = Spring.DampingRatioNoBouncy,
+											stiffness = Spring.StiffnessLow
+										)
+									),
+									exit = shrinkOut(
+										shrinkTowards = Alignment.BottomStart,
+										animationSpec = spring(
+											dampingRatio = Spring.DampingRatioNoBouncy,
+											stiffness = Spring.StiffnessVeryLow
+										)
+									) + fadeOut(animationSpec = tween(durationMillis = 300)),
+									visible = selectedIndex == index
+								) {
+									Icon(
+										modifier = Modifier
+											.padding(AppPadding.SemiMedium)
+											.size(AppSize.IconSmall),
+										tint = Color.White,
+										painter = painterResource(R.drawable.ic_edit_icon),
+										contentDescription = "Edit Icon"
+									)
+								}
+							}
 						}
 					}
 				}
