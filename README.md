@@ -25,6 +25,7 @@
 
 | Logo | Program | Description |
 |------|---------|-------------|
+| <img src="https://hacktoberfest.com/_next/static/media/opengraph.6e804091.png" alt="Hacktoberfest" width="200px"> | [**Hacktoberfest 2025**](https://hacktoberfest.com/) | Hacktoberfest: a month-long celebration of open-source projects, their maintainers, and the entire community of contributors. |
 | <img src="https://miro.medium.com/v2/resize:fit:2400/1*ZfYWXN0zA6TqQQ7wGNJUOg.jpeg" alt="Gssoc" width="200px"> | [**GSSoC '25**](https://gssoc.girlscript.tech/) | GirlScript Summer of Code (GSSoC) is an open-source program that helps students enhance their coding skills by contributing to real-world projects. It provides mentorship, hands-on experience, and a platform to collaborate with developers across the globe. |
 
 
