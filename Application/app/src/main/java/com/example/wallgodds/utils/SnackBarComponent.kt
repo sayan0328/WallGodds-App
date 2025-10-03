@@ -17,8 +17,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.example.wallgodds.R
 import com.example.wallgodds.ui.theme.AppSize
 
 @Composable
@@ -47,6 +50,7 @@ fun SnackBarComponent(
                     style = MaterialTheme.typography.bodyLarge,
                     textAlign = TextAlign.Center,
                     color = Color.Black,
+                    fontFamily = FontFamily(Font(R.font.poppins_medium)),
                     modifier = Modifier
                         .align(Alignment.Center)
                         .padding(vertical = 16.dp, horizontal = 24.dp)
