@@ -6,20 +6,14 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SnackbarDuration
-import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -33,7 +27,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.wallgodds.R
 import com.example.wallgodds.navigation.Routes
@@ -41,6 +34,7 @@ import com.example.wallgodds.ui.theme.AppPadding
 import com.example.wallgodds.ui.theme.AppSize
 import com.example.wallgodds.utils.LazyRowScrollbar
 import com.example.wallgodds.utils.RandomWallpaperGrid
+import com.example.wallgodds.utils.SnackBarComponent
 import com.example.wallgodds.utils.TopAppBar
 import com.example.wallgodds.utils.hasShownSnackbar
 import com.example.wallgodds.utils.markSnackbarShown
@@ -171,34 +165,9 @@ fun HomePage(navController: NavController) {
 
         }
 
-        SnackbarHost(
-            hostState = snackbarHostState,
-            modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .windowInsetsPadding(WindowInsets.navigationBars)
-                .padding(vertical = 90.dp),
-            snackbar = { data ->
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 32.dp)
-                        .background(
-                            Color.White,
-                            shape = RoundedCornerShape(AppSize.HighCornerRadius)
-                        )
-                ) {
-                    Text(
-                        text = data.visuals.message,
-                        style = MaterialTheme.typography.bodyLarge,
-                        textAlign = TextAlign.Center,
-                        color = Color.Black,
-                        modifier = Modifier
-                            .align(Alignment.Center)
-                            .padding(vertical = 16.dp, horizontal = 24.dp)
-                            .fillMaxWidth()
-                    )
-                }
-            }
+        SnackBarComponent(
+            modifier = Modifier.align(Alignment.BottomCenter),
+            snackbarHostState = snackbarHostState
         )
     }
 }

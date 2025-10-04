@@ -34,8 +34,11 @@ import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.SnackbarDuration
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -49,6 +52,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -59,7 +63,13 @@ import com.example.wallgodds.R
 import com.example.wallgodds.navigation.Routes
 import com.example.wallgodds.ui.theme.AppPadding
 import com.example.wallgodds.ui.theme.AppSize
+import com.example.wallgodds.utils.SnackBarComponent
+import com.example.wallgodds.utils.SnackBarType
 import com.example.wallgodds.utils.TopAppBar
+import com.example.wallgodds.utils.hasShownSnackbar
+import com.example.wallgodds.utils.markSnackbarShown
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.withTimeoutOrNull
 
 // Upload Page
 @OptIn(ExperimentalFoundationApi::class)
@@ -77,6 +87,25 @@ fun UploadPage(navController: NavController) {
 	val imageList = remember {
 		mutableStateOf(List(30) { index -> availableWallpapers[index % availableWallpapers.size] })
 	}
+
+	val snackbarHostState = remember {
+		SnackbarHostState()
+	}
+	val context = LocalContext.current
+
+	LaunchedEffect(Unit) {
+		delay(500)
+		if (!hasShownSnackbar(context, SnackBarType.Upload)) {
+			withTimeoutOrNull(3000) {
+				snackbarHostState.showSnackbar(
+					message = "Tap & Hold to Edit Wallpaper",
+					duration = SnackbarDuration.Indefinite
+				)
+			}
+			markSnackbarShown(context, SnackBarType.Upload)
+		}
+	}
+
 
 	// Whole Screen is wrapped in a box for better alignment and component stacking
 	Box(modifier = Modifier.fillMaxSize()) {
@@ -213,6 +242,11 @@ fun UploadPage(navController: NavController) {
 				}
 			}
 		}
+
+		SnackBarComponent(
+			modifier = Modifier.align(Alignment.BottomCenter),
+			snackbarHostState = snackbarHostState
+		)
 	}
 }
 
