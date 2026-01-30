@@ -34,3 +34,6 @@ val BackgroundPink = Color(0xFFFDEEF4) // Soft pink background from original scr
 
 // Colors for hero section
 val AppBarColor = Color(0xFFE7E7E7)
+
+// Navbar
+val NavbarPurple = Color(0xFF8F79FF)

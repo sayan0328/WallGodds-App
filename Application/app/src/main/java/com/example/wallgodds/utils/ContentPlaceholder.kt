@@ -1,9 +1,11 @@
 package com.example.wallgodds.utils
 
-import android.graphics.fonts.Font
-import androidx.annotation.StringRes
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
+import androidx.browser.customtabs.CustomTabsIntent
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -11,13 +13,16 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
@@ -25,31 +30,32 @@ import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathEffect
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.wallgodds.R
-import com.example.wallgodds.ui.theme.AppPadding
 import com.example.wallgodds.ui.theme.AppSize
 import com.example.wallgodds.ui.theme.AshGray
 import com.example.wallgodds.ui.theme.Blue
 import com.example.wallgodds.ui.theme.GrapePurple
-import com.example.wallgodds.ui.theme.SoftBlue
 import com.example.wallgodds.ui.theme.guedFontFamily
+import androidx.core.net.toUri
 
 @Composable
 fun ContentPlaceholder(
     modifier: Modifier = Modifier,
 ) {
+    val context = LocalContext.current
+    var textLayoutResult by remember { mutableStateOf<TextLayoutResult?>(null) }
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -83,10 +89,36 @@ fun ContentPlaceholder(
             Spacer(modifier = Modifier.height(36.dp))
             Text(
                 text = annotatedMessage,
+                onTextLayout = { textLayoutResult = it },
+                modifier = Modifier
+                    .padding(horizontal = 32.dp)
+                    .pointerInput(Unit) {
+                        detectTapGestures { tapOffset ->
+
+                            val layout = textLayoutResult ?: return@detectTapGestures
+                            val charIndex = layout.getOffsetForPosition(tapOffset)
+
+                            // Wondering why is this done in such a complicated way?
+                            // Well, not every OS is made perfect 🥲
+
+                            annotatedMessage
+                                .getStringAnnotations(
+                                    start = charIndex,
+                                    end = charIndex
+                                )
+                                .firstOrNull()
+                                ?.let { annotation ->
+                                    val intent = Intent(
+                                        Intent.ACTION_VIEW,
+                                        annotation.item.toUri()
+                                    )
+                                    context.startActivity(intent)
+                                }
+                        }
+                },
                 fontFamily = guedFontFamily,
                 fontSize = 23.sp,
                 textAlign = TextAlign.Center,
-                modifier = Modifier.padding(horizontal = 32.dp)
             )
         }
     }
@@ -122,7 +154,7 @@ fun Modifier.dashedBorder(
     }
 )
 
-val message = "This section is being designed and will be available for contributors soon"
+const val message = "This section is being designed and will be available for contributors soon"
 
 val annotatedMessage = buildAnnotatedString {
 
@@ -130,15 +162,11 @@ val annotatedMessage = buildAnnotatedString {
         append("Keep an eye on ")
     }
 
-    pushLink(
-        LinkAnnotation.Url(
-            url = "https://github.com/WallGodds/WallGodds-App/issues"
-        )
+    pushStringAnnotation(
+        tag = "GITHUB",
+        annotation = "https://github.com/WallGodds/WallGodds-App/issues"
     )
-    withStyle(SpanStyle(
-        color = GrapePurple,
-        textDecoration = TextDecoration.None
-    )) {
+    withStyle(SpanStyle(color = GrapePurple)) {
         append("GitHub ")
     }
     pop()
@@ -147,15 +175,11 @@ val annotatedMessage = buildAnnotatedString {
         append("and ")
     }
 
-    pushLink(
-        LinkAnnotation.Url(
-            url = "https://discord.gg/kTQ5KWANp8"
-        )
+    pushStringAnnotation(
+        tag = "DISCORD",
+        annotation = "https://discord.gg/kTQ5KWANp8"
     )
-    withStyle(SpanStyle(
-        color = GrapePurple,
-        textDecoration = TextDecoration.None
-    )) {
+    withStyle(SpanStyle(color = GrapePurple)) {
         append("Discord ")
     }
     pop()

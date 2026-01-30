@@ -39,6 +39,7 @@ import androidx.navigation.NavDestination.Companion.hierarchy
 import com.example.wallgodds.ui.theme.AppPadding
 import com.example.wallgodds.ui.theme.AppSize
 import com.example.wallgodds.ui.theme.GrapePurple
+import com.example.wallgodds.ui.theme.NavbarPurple
 import com.example.wallgodds.ui.theme.guedFontFamily
 
 @Composable
@@ -113,7 +114,7 @@ fun CustomNavigationBarItem(
     } else Modifier
 
     val selectedBackgroundColor by animateColorAsState(
-        targetValue = if(isSelected) GrapePurple else Color.White,
+        targetValue = if(isSelected) NavbarPurple else Color.White,
         animationSpec = tween(durationMillis = 500)
     )
 
