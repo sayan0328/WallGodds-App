@@ -34,32 +34,33 @@ import androidx.compose.ui.graphics.Color.Companion.Gray
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import com.example.wallgodds.ui.theme.AppPadding
 import com.example.wallgodds.ui.theme.AppSize
+import com.example.wallgodds.ui.theme.GrapePurple
+import com.example.wallgodds.ui.theme.guedFontFamily
 
 @Composable
 fun CustomNavigationBar(
     currentDestination: NavDestination?,
-    items: List<NavItems>,
-    onItemClick: (NavItems) -> Unit
+    items: List<NavItem>,
+    onItemClick: (NavItem) -> Unit
 ) {
 
-    val bottomFade = Brush.verticalGradient(0f to Color.Transparent, 0.2f to Color.Black.copy(0.4f))
+//    val bottomFade = Brush.verticalGradient(0f to Color.Transparent, 0.2f to Color.Black.copy(0.4f))
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .background(bottomFade),
+            .padding(horizontal = 12.dp),
         contentAlignment = Alignment.Center,
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = AppPadding.Medium)
-                .height(100.dp)
-                .clip(RoundedCornerShape(topStart = AppSize.HighCornerRadius, topEnd = AppSize.HighCornerRadius))
+                .height(72.dp)
+                .clip(RoundedCornerShape(AppSize.MediumCornerRadius))
                 .background(Color.White),
             horizontalArrangement = Arrangement.SpaceEvenly,
             verticalAlignment = Alignment.CenterVertically
@@ -77,21 +78,23 @@ fun CustomNavigationBar(
 
 @Composable
 fun CustomNavigationBarItem(
-    item: NavItems,
+    item: NavItem,
     isSelected: Boolean,
     onItemClick: () -> Unit
 ) {
     val fontSize by animateFloatAsState(
-        targetValue = if (isSelected) 16f else 12f,
+        targetValue = if (isSelected) 12f else 8f,
         animationSpec = tween(durationMillis = 500)
     )
     val borderAlpha by animateFloatAsState(
         targetValue = if (isSelected) 1f else 0f,
         animationSpec = tween(durationMillis = 300)
     )
+
     val borderBrush = Brush.horizontalGradient(
         colors = listOf(Color(0xFFFF8A65).copy(alpha = borderAlpha), Color(0xFF4DD0E1).copy(alpha = borderAlpha))
     )
+
     val borderModifier = if (borderAlpha > 0f) {
         Modifier.border(
             width = 2.dp,
@@ -99,20 +102,30 @@ fun CustomNavigationBarItem(
             shape = RoundedCornerShape(50)
         )
     } else Modifier
+
     val iconSize by animateDpAsState(
-        targetValue = if (isSelected) 16.dp else 12.dp,
+        targetValue = if (isSelected) 20.dp else 18.dp,
         animationSpec = tween(durationMillis = 500)
     )
+
     val shadowModifier = if (isSelected) {
         Modifier.shadow(elevation = 3.dp, shape = RoundedCornerShape(50))
     } else Modifier
+
+    val selectedBackgroundColor by animateColorAsState(
+        targetValue = if(isSelected) GrapePurple else Color.White,
+        animationSpec = tween(durationMillis = 500)
+    )
+
+
     val tint by animateColorAsState(
-        targetValue = if (isSelected) Color.Black else Gray,
+        targetValue = if (isSelected) Color.White else Gray,
         animationSpec = tween(durationMillis = 500)
     )
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
         modifier = Modifier
             .clickable(
                 onClick = onItemClick,
@@ -122,25 +135,28 @@ fun CustomNavigationBarItem(
     ) {
         Box(
             modifier = Modifier
-                .then(shadowModifier)
-                .clip(RoundedCornerShape(50))
-                .then(borderModifier)
-                .background(Color.White)
-                .padding(horizontal = AppPadding.Large, vertical = AppPadding.Medium)
+//                .then(shadowModifier)
+                .clip(RoundedCornerShape(AppSize.HighCornerRadius))
+//                .then(borderModifier)
+                .background(selectedBackgroundColor)
+                .padding(horizontal = AppPadding.Large, vertical = AppPadding.SemiMedium)
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(
                     imageVector = ImageVector.vectorResource(id = item.icon),
                     contentDescription = item.label,
-                    modifier = Modifier.size(iconSize),
+                    modifier = Modifier.size(20.dp),
                     tint = tint
                 )
-                Spacer(modifier = Modifier.width(4.dp))
-                Text(
-                    text = item.label,
-                    color = tint,
-                    fontSize = fontSize.sp
-                )
+                if(isSelected) {
+                    Spacer(modifier = Modifier.width(4.dp))
+                    Text(
+                        text = item.label,
+                        fontFamily = guedFontFamily,
+                        color = tint,
+                        fontSize = AppSize.FontSizeSmaller
+                    )
+                }
             }
         }
     }

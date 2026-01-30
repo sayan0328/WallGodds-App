@@ -40,23 +40,42 @@ fun RandomWallpaperGrid(
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
-            .padding(horizontal = AppPadding.MainContentPadding, vertical = AppPadding.Small),
+            .padding(horizontal = AppPadding.MainContentPadding)
+            .padding(top = AppPadding.Small),
         verticalArrangement = Arrangement.spacedBy(AppPadding.Small)
     ) {
-        val chunkedImages = wallpapers.chunked(3)
+        val chunkedImages = wallpapers.chunked(2)
         item {
             HeroSection()
         }
         items(chunkedImages.size) { index ->
             val images = chunkedImages[index]
-            val layoutType = index % 4
-            when(layoutType) {
-                0 -> BigOneOnTheLeft(images,onWallpaperClick)
-                1 -> ThreeInRow(images,onWallpaperClick)
-                2 -> BigOneOnTheRight(images,onWallpaperClick)
-                else -> ThreeInRow(images,onWallpaperClick)
-            }
+            WallpaperGrid(images,onWallpaperClick)
         }
+    }
+}
+
+@Composable
+fun WallpaperGrid(
+    images: List<Int>,
+    onWallpaperClick: (Int) -> Unit) {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.spacedBy(AppPadding.Small)
+    ) {
+        images.forEach { image ->
+            Image(
+                painter = painterResource(id = image),
+                contentDescription = null,
+                modifier = Modifier
+                    .clickable { onWallpaperClick(image) }
+                    .weight(1f)
+                    .aspectRatio(9f / 16f)
+                    .clip(RoundedCornerShape(AppSize.WallpaperRoundedCorner)),
+                contentScale = ContentScale.Fit
+            )
+        }
+
     }
 }
 
@@ -91,145 +110,21 @@ fun HeroSection() {
             Text(
                 "WallGodds",
                 fontFamily = FontFamily(Font(R.font.gruppo_regular)),
-                fontSize = AppSize.FontSizeExtraLarge
+                fontSize = AppSize.FontSizeExtraLarge,
+                color = Color.Black
             )
             Text(
                 "Minimal by Design, Inspired by You",
                 fontFamily = FontFamily(Font(R.font.instrument_serif_italic)),
-                fontSize = AppSize.HeroFontSizeMedium
+                fontSize = AppSize.HeroFontSizeMedium,
+                color = Color.Black
             )
             Spacer(modifier = Modifier.height(14.dp))
             Text(
                 "“Walls That Fit Every Screen — On the Web.”",
                 fontFamily = FontFamily(Font(R.font.habibi)),
-                fontSize = AppSize.HeroFontSizeSmall
-            )
-        }
-    }
-
-}
-
-@Composable
-fun BigOneOnTheLeft(
-    images: List<Int>,
-    onWallpaperClick: (Int) -> Unit) {
-    Row(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.spacedBy(AppPadding.Small)
-    ) {
-        images.getOrNull(0)?.let {
-            Image(
-                painter = painterResource(id = it),
-                contentDescription = null,
-                modifier = Modifier
-                    .clickable { onWallpaperClick(it) }
-                    .weight(2f)
-                    .aspectRatio(9f / 16f)
-                    .clip(RoundedCornerShape(AppSize.WallpaperRoundedCorner))
-                    .align(Alignment.CenterVertically),
-                contentScale = ContentScale.Fit
-            )
-        }
-        Column(
-            modifier = Modifier.weight(1f),
-            verticalArrangement = Arrangement.spacedBy(AppPadding.Smallest)
-        ) {
-            images.getOrNull(1)?.let {
-                Image(
-                    painter = painterResource(id = it),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .clickable { onWallpaperClick(it) }
-                        .aspectRatio(9f / 16f)
-                        .clip(RoundedCornerShape(AppSize.WallpaperRoundedCorner)),
-                    contentScale = ContentScale.Fit
-                )
-            }
-            images.getOrNull(2)?.let {
-                Image(
-                    painter = painterResource(id = it),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .clickable { onWallpaperClick(it) }
-                        .aspectRatio(9f / 16f)
-                        .clip(RoundedCornerShape(AppSize.WallpaperRoundedCorner)),
-                    contentScale = ContentScale.Fit
-                )
-            }
-        }
-    }
-}
-
-@Composable
-fun ThreeInRow(
-    images: List<Int>,
-    onWallpaperClick: (Int) -> Unit) {
-    Row(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.spacedBy(AppPadding.Small)
-    ) {
-        images.forEach { image ->
-            Image(
-                painter = painterResource(id = image),
-                contentDescription = null,
-                modifier = Modifier
-                    .clickable { onWallpaperClick(image) }
-                    .weight(1f)
-                    .aspectRatio(9f / 16f)
-                    .clip(RoundedCornerShape(AppSize.WallpaperRoundedCorner)),
-                contentScale = ContentScale.Fit
-            )
-        }
-
-    }
-}
-
-@Composable
-fun BigOneOnTheRight(
-    images: List<Int>,
-    onWallpaperClick: (Int) -> Unit) {
-    Row(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.spacedBy(AppPadding.Small)
-    ) {
-        Column(
-            modifier = Modifier.weight(1f),
-            verticalArrangement = Arrangement.spacedBy(AppPadding.Smallest)
-        ) {
-            images.getOrNull(0)?.let {
-                Image(
-                    painter = painterResource(id = it),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .clickable { onWallpaperClick(it) }
-                        .aspectRatio(9f / 16f)
-                        .clip(RoundedCornerShape(AppSize.WallpaperRoundedCorner)),
-                    contentScale = ContentScale.Fit
-                )
-            }
-            images.getOrNull(1)?.let {
-                Image(
-                    painter = painterResource(id = it),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .clickable { onWallpaperClick(it) }
-                        .aspectRatio(9f / 16f)
-                        .clip(RoundedCornerShape(AppSize.WallpaperRoundedCorner)),
-                    contentScale = ContentScale.Fit
-                )
-            }
-        }
-        images.getOrNull(2)?.let {
-            Image(
-                painter = painterResource(id = it),
-                contentDescription = null,
-                modifier = Modifier
-                    .clickable { onWallpaperClick(it) }
-                    .weight(2f)
-                    .aspectRatio(9f / 16f)
-                    .clip(RoundedCornerShape(AppSize.WallpaperRoundedCorner))
-                    .align(Alignment.CenterVertically),
-                contentScale = ContentScale.Fit
+                fontSize = AppSize.HeroFontSizeSmall,
+                color = Color.Black
             )
         }
     }
