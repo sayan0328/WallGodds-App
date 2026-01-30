@@ -17,9 +17,12 @@ val SoftYellow = Color(0xFFFFF4CF)
 val SoftBlush = Color(0xFFFEF6FB)
 val BackgroundIcon = Color(0xFF353935)
 val Gray = Color(0xFF808080)
-val Blue = Color(0xFF407BFF)
+val AshGray = Color(0xFF7B7C86)
+val SoftBlue = Color(0xFF407BFF)
+val Blue = Color(0xFF3C56B1)
 val EnabledButtonColor = Color(0xFF407BFF)
 val DisabledButtonColor = Color(0xFFB0C4FF)
+val GrapePurple = Color(0xFF7056F5)
 
 // ✅ ADDED: Colors from the Bug Report screen for consistency
 val TextBlack = Color.Black

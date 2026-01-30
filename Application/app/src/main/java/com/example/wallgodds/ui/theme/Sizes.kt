@@ -20,6 +20,7 @@ object AppSize {
     val WallpaperRoundedCorner = 20.dp // e.g. Wallpaper
 
     // FontSizes
+    val FontSizeSmaller = 12.sp
     val FontSizeSmall = 14.sp
     val FontSizeMedium = 18.sp
     val FontSizeExtraLarge = 48.sp
