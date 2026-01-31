@@ -15,19 +15,18 @@ val listOfNavItems: List<NavItem> = listOf(
         route = Routes.home_page
     ),
     NavItem(
-        label = "Favorites",
-        icon = R.drawable.favorites_icon,
-        route = Routes.favorites_page
-    ),
-    NavItem(
         label = "Upload",
         icon = R.drawable.upload_icon,
         route = Routes.upload_page
+    ),
+    NavItem(
+        label = "Favorites",
+        icon = R.drawable.favorites_icon,
+        route = Routes.favorites_page
     ),
     NavItem(
         label = "Profile",
         icon = R.drawable.profile_icon,
         route = Routes.profile_page
     ),
-
     )
