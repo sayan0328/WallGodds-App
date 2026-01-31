@@ -1,14 +1,12 @@
-# 🖼 WallGodds App: The Wallpaper Revolution, Now in Your Pocket
-
 <div align="center" width ="100%">
-  <img src="https://github.com/sayan0328/WallGodds-App/blob/main/MOBILE%20APP%20BANNER.png" alt="WallGodds Banner" />
+  <img src="https://github.com/WallGodds/WallGodds-App/blob/main/WG%20App%20Banner.png" alt="WallGodds App Banner" />
 </div>
 <br>
 <div align="center">
-  <a href="https://github.com/Parnab03/WallGodds" style="text-decoration: none; margin-right: 20px;">
+  <a href="https://github.com/WallGodds/WallGodds-Web" style="text-decoration: none; margin-right: 20px;">
     <img src="https://img.shields.io/badge/WallGodds%20Web-%237056F5?style=for-the-badge&logo=app&logoColor=blue" alt="WallGodds Web" style="border-radius: 7px;">
   </a>
-   <a href="https://github.com/sayan0328/WallGodds-App" style="text-decoration: none; margin-right: 20px;">
+   <a href="https://github.com/WallGodds/WallGodds-App" style="text-decoration: none; margin-right: 20px;">
     <img src="https://img.shields.io/badge/WallGodds%20App-%23008FFF?style=for-the-badge&logo=web&logoColor=white" alt="WallGodds App" style="border-radius: 7px;">
   </a>
 </div>
@@ -25,6 +23,8 @@
 
 | Logo | Program | Description |
 |------|---------|-------------|
+| <img src="https://apertre.resourcio.in/assets/vector.svg" alt="Apertre 3.0" width="200px"> | [**Apertre 3.0**](https://apertre.resourcio.in/) | Apertre 3.0 is a 30-day open-source contribution initiative by Resourcio Community where developers of all levels collaborate on real projects, learn from mentors, and boost their portfolios. |
+| <img src="https://devfolio-prod.s3.ap-south-1.amazonaws.com/hackathons/ee8d75f60f0a4acf85238eabdea1bad3/assets/logo/273.png" alt="WOC 5.0 Logo" width="200px"> | [**Winter of Code 5.0**](https://winter-of-code.tech/) | Winter of Code 5.0 is a 30 day open-source mentorship program by GDG On Campus IIIT Kalyani, inspired by Google Summer of Code. It brings developers of all levels together to contribute to real projects, learn from mentors, and grow in the open-source community. |
 | <img src="https://hacktoberfest.com/_next/static/media/opengraph.6e804091.png" alt="Hacktoberfest" width="200px"> | [**Hacktoberfest 2025**](https://hacktoberfest.com/) | Hacktoberfest: a month-long celebration of open-source projects, their maintainers, and the entire community of contributors. |
 | <img src="https://miro.medium.com/v2/resize:fit:2400/1*ZfYWXN0zA6TqQQ7wGNJUOg.jpeg" alt="Gssoc" width="200px"> | [**GSSoC '25**](https://gssoc.girlscript.tech/) | GirlScript Summer of Code (GSSoC) is an open-source program that helps students enhance their coding skills by contributing to real-world projects. It provides mentorship, hands-on experience, and a platform to collaborate with developers across the globe. |
 
@@ -123,7 +123,7 @@ We welcome contributions from developers, designers, and tech enthusiasts! Follo
 
 If you're a designer, explore the [DESIGN.md](DESIGN.md) for design guidelines and collaboration details.  
 
-If you're excited to contribute wallpapers to WallGodds, head over to the [WALLPAPER.md](https://github.com/sayan0328/WallGodds-App/blob/main/Wallpapers/WALLPAPER.md) file. It contains a step-by-step guide on how to create, name, and submit your designs. Dive in and let your creativity shine! 🖼️
+If you're excited to contribute wallpapers to WallGodds, head over to the [WALLPAPER.md](https://github.com/WallGodds/WallGodds-App/blob/main/Wallpapers/WALLPAPER.md) file. It contains a step-by-step guide on how to create, name, and submit your designs. Dive in and let your creativity shine! 🖼️
 
 ---
 
@@ -151,15 +151,15 @@ This project is licensed under the [MIT License](LICENSE). You’re free to use,
 ## 🌐 Community Links  
 
 Stay connected with our growing community:  
-- **GitHub Discussions**: [Join the conversation](https://github.com/sayan0328/WallGodds-App/discussions)  
+- **GitHub Discussions**: [Join the conversation](https://github.com/WallGodds/WallGodds-App/discussions)  
 - **Discord Server**: [Connect with us](https://discord.gg/kTQ5KWANp8)  
-- **LinkedIn Page**: [Follow us](https://www.linkedin.com/company/wallgodds/posts/?feedView=all)
+- **LinkedIn Page**: [Follow us](https://www.linkedin.com/company/wallgodds)
 ---
 
 ## 💡 Suggestions and Feedback  
 
 We love feedback! If you have ideas or feature requests:  
-- Create a [GitHub Issue](https://github.com/sayan0328/WallGodds-App/issues).  
+- Create a [GitHub Issue](https://github.com/WallGodds/WallGodds-App/issues).  
 - Participate in our GitHub Discussions.  
 
 ---
