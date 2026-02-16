@@ -14,10 +14,10 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 
-fun LazyGridScope.WallpaperGrid(wallpapers: List<Any>, onClick: () -> Unit = {}) {
+fun LazyGridScope.wallpaperGrid(wallpapers: List<Any>, onClick: () -> Unit = {}) {
     itemsIndexed(wallpapers) { index, wallpaper ->
-        val startPadding = if (index % 2 == 0) 24.dp else 8.dp
-        val endPadding = if (index % 2 == 0) 8.dp else 24.dp
+        val startPadding = if (index % 2 == 0) 24.dp else 6.dp
+        val endPadding = if (index % 2 == 0) 6.dp else 24.dp
 
         Box(
             modifier = Modifier
