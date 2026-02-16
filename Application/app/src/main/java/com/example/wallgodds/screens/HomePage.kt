@@ -41,7 +41,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.IntOffset
@@ -50,8 +49,11 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.example.wallgodds.R
+import com.example.wallgodds.ui.theme.AppPadding
+import com.example.wallgodds.ui.theme.BannerTextColor
+import com.example.wallgodds.ui.theme.guedFontFamily
 import com.example.wallgodds.ui.theme.poppinsFontFamily
-import com.example.wallgodds.utils.WallpaperGrid
+import com.example.wallgodds.utils.wallpaperGrid
 import com.example.wallgodds.wallpapers.wallpapers
 import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
@@ -66,7 +68,7 @@ fun HomePage(navController: NavController) {
                 columns = GridCells.Fixed(2),
                 modifier = Modifier.fillMaxSize(),
                 contentPadding = PaddingValues(top = 12.dp, bottom = 24.dp),
-                verticalArrangement = Arrangement.spacedBy(16.dp)
+                verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 item(span = { GridItemSpan(2) }) {
                     TopSection()
@@ -89,15 +91,15 @@ fun HomePage(navController: NavController) {
                         )
                         Text(
                             text = "Need laptop or desktop wallpapers?\nVisit WallGodds website",
-                            color = Color.White,
+                            fontFamily = guedFontFamily,
+                            color = BannerTextColor,
                             textAlign = TextAlign.Center,
-                            fontSize = 18.sp,
-                            fontFamily = poppinsFontFamily
+                            fontSize = 18.sp
                         )
                     }
                 }
 
-                WallpaperGrid(wallpapers = wallpapers)
+                wallpaperGrid(wallpapers = wallpapers)
             }
         }
     }
@@ -120,7 +122,7 @@ fun TopSection() {
                 .padding(horizontal = 24.dp)
                 .height(54.dp)
                 .clip(RoundedCornerShape(16.dp))
-                .background(Color.White.copy(alpha = 0.4f))
+                .background(Color.White.copy(alpha = 0.6f))
         ) {
             BasicTextField(
                 value = searchText,
@@ -176,15 +178,15 @@ fun TopSection() {
             modifier = Modifier
                 .fillMaxWidth()
                 .horizontalScroll(scrollState)
-                .padding(start = 24.dp, top = 6.dp, bottom = 6.dp),
+                .padding(horizontal = AppPadding.MainContentPadding, vertical = 6.dp),
             horizontalArrangement = Arrangement.spacedBy(14.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             categories.forEach { (name, imageRes) ->
                 Box(
                     modifier = Modifier
-                        .size(width = 76.dp, height = 32.dp)
-                        .clip(RoundedCornerShape(12.dp)),
+                        .size(width = 76.dp, height = 26.dp)
+                        .clip(RoundedCornerShape(8.dp)),
                     contentAlignment = Alignment.Center
                 ) {
                     AsyncImage(
@@ -218,13 +220,13 @@ fun TopSection() {
             contentAlignment = Alignment.Center
         ) {
             val trackWidth = 120.dp
-            val thumbWidth = 24.dp
+            val thumbWidth = 18.dp
             val density = LocalDensity.current
             
             val trackWidthPx = with(density) { trackWidth.toPx() }
             val thumbWidthPx = with(density) { thumbWidth.toPx() }
             val dragRange = trackWidthPx - thumbWidthPx
-            
+
             Box(
                 modifier = Modifier
                     .width(trackWidth)
@@ -244,7 +246,7 @@ fun TopSection() {
                         .offset {
                             val maxScroll = scrollState.maxValue.toFloat()
                             val scrollValue = scrollState.value.toFloat()
-                            
+
                             val offset = if (maxScroll > 0) {
                                 (scrollValue / maxScroll) * dragRange
                             } else {
