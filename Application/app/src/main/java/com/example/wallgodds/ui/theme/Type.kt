@@ -39,3 +39,8 @@ val guedFontFamily = FontFamily(
     Font(R.font.gued, FontWeight.Normal),
     Font(R.font.gued_bold, FontWeight.Bold),
 )
+
+val poppinsFontFamily = FontFamily(
+    Font(R.font.poppins_regular, FontWeight.Normal),
+    Font(R.font.poppins_medium, FontWeight.Medium)
+)
