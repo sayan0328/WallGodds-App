@@ -193,7 +193,7 @@ private fun EmptyState() {
         verticalArrangement = Arrangement.Center
     ) {
         Image(
-            painter = painterResource(id = R.drawable.no_favourite_illustration),
+            painter = painterResource(id = R.drawable.favourite_page_guy),
             contentDescription = "No favourites illustration",
             modifier = Modifier
                 .size(220.dp, 200.dp)
