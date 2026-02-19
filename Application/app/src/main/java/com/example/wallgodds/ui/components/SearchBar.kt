@@ -15,6 +15,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.wallgodds.R
+import com.example.wallgodds.ui.theme.poppinsFontFamily
 
 @Composable
 fun SearchBar(
@@ -39,6 +40,7 @@ fun SearchBar(
             Text(
                 text = "Search",
                 fontSize = 14.sp,
+                fontFamily = poppinsFontFamily,
                 lineHeight = 14.sp,
                 color = Color(0xFF929292)
             )

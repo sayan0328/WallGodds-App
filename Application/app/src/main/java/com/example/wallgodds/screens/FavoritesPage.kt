@@ -86,6 +86,7 @@ fun FavoritesPageScreen(navController: NavController) {
                             text = sortOption,
                             color = Color(0xFF929292),
                             fontSize = 15.sp,
+                            fontFamily = poppinsFontFamily,
                             fontWeight = FontWeight.Medium
                         )
                         Spacer(modifier = Modifier.width(4.dp))
