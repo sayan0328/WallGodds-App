@@ -49,6 +49,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.example.wallgodds.R
+import com.example.wallgodds.ui.components.SearchBar
 import com.example.wallgodds.ui.theme.AppPadding
 import com.example.wallgodds.ui.theme.BannerTextColor
 import com.example.wallgodds.ui.theme.guedFontFamily
@@ -116,52 +117,14 @@ fun TopSection() {
             .fillMaxWidth()
             .background(Color.Transparent)
     ) {
-        Box(
+
+        SearchBar(
+            value = searchText,
+            onValueChange = { searchText = it },
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 24.dp)
-                .height(54.dp)
-                .clip(RoundedCornerShape(16.dp))
-                .background(Color.White.copy(alpha = 0.6f))
-        ) {
-            BasicTextField(
-                value = searchText,
-                onValueChange = { searchText = it },
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(horizontal = 20.dp),
-                singleLine = true,
-                textStyle = TextStyle(
-                    color = Color.Black,
-                    fontSize = 16.sp,
-                    fontFamily = poppinsFontFamily
-                ),
-                decorationBox = { innerTextField ->
-                    Row(
-                        modifier = Modifier.fillMaxSize(),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Box(modifier = Modifier.weight(1f)) {
-                            if (searchText.isEmpty()) {
-                                Text(
-                                    text = "Search",
-                                    color = Color(0xFF9E9E9E),
-                                    fontSize = 16.sp,
-                                    fontFamily = poppinsFontFamily
-                                )
-                            }
-                            innerTextField()
-                        }
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_search_figma),
-                            contentDescription = "Search",
-                            tint = Color.Unspecified,
-                            modifier = Modifier.size(26.dp)
-                        )
-                    }
-                }
-            )
-        }
+                .padding(horizontal = AppPadding.MainContentPadding)
+        )
 
         Spacer(modifier = Modifier.height(10.dp))
 

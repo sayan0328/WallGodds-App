@@ -17,19 +17,13 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.KeyboardArrowDown
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
@@ -37,20 +31,16 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import coil.compose.AsyncImage
 import com.example.wallgodds.R
+import com.example.wallgodds.ui.components.SearchBar
 import com.example.wallgodds.ui.theme.AppPadding
 import com.example.wallgodds.ui.theme.poppinsFontFamily
-import com.example.wallgodds.utils.ContentPlaceholder
 
 @Composable
 fun FavoritesPageScreen(navController: NavController) {
@@ -70,40 +60,10 @@ fun FavoritesPageScreen(navController: NavController) {
             modifier = Modifier
                 .fillMaxWidth()
         ) {
-            OutlinedTextField(
+            SearchBar(
                 value = searchText,
-                onValueChange = {searchText = it},
-                modifier = Modifier
-                   // .width(215.dp)
-                    .weight(1f)
-                    .height(48.dp),
-                shape = RoundedCornerShape(16.dp),
-                trailingIcon = {
-                    Icon(
-                        imageVector = Icons.Default.Search,
-                        contentDescription = "Search",
-                        tint = Color(0xFF929292),
-                    )
-                },
-                placeholder = {
-                    Text("Search",
-                        fontSize= 14.sp,
-                        lineHeight = 14.sp,
-                        color = Color(0xFF929292)
-                    )},
-                singleLine = true,
-                minLines = 1,
-                maxLines = 1,
-                textStyle = TextStyle(fontSize = 14.sp,lineHeight = 14.sp ),
-                colors = OutlinedTextFieldDefaults.colors(
-                    unfocusedContainerColor = Color.White.copy(alpha = 0.6f),
-                    focusedContainerColor = Color.White.copy(alpha = 0.6f),
-                    unfocusedBorderColor = Color.Transparent,
-                    focusedBorderColor = Color.Transparent,
-                    focusedTextColor =Color(0xFF929292),
-                    unfocusedTextColor = Color(0xFF929292),
-                    cursorColor = Color(0xFF929292)
-                )
+                onValueChange = { searchText = it },
+                modifier = Modifier.weight(1f)
             )
 
             Spacer(modifier = Modifier.width(12.dp))
@@ -176,7 +136,7 @@ fun FavoritesPageScreen(navController: NavController) {
                     }
             }
         }
-        Spacer(modifier = Modifier.height(180.dp))
+        Spacer(modifier = Modifier.height(240.dp))
         if (isEmpty) {
             EmptyState()
         }
@@ -196,9 +156,9 @@ private fun EmptyState() {
             painter = painterResource(id = R.drawable.favourite_page_guy),
             contentDescription = "No favourites illustration",
             modifier = Modifier
-                .size(220.dp, 200.dp)
+                .size(170.dp, 160.dp)
         )
-        Spacer(modifier = Modifier.height(4.dp))
+
         Text(
             text = "No favourites yet.",
             fontSize = 20.sp,
@@ -206,8 +166,6 @@ private fun EmptyState() {
             fontFamily = poppinsFontFamily,
             color = Color(0xFF808080),
         )
-
-        Spacer(modifier = Modifier.height(4.dp))
 
         Text(
             text = "Start saving wallpapers you like.",
@@ -218,6 +176,3 @@ private fun EmptyState() {
         )
     }
 }
-
-
-
