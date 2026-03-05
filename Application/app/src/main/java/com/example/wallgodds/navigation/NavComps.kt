@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -41,9 +42,14 @@ import com.example.wallgodds.ui.theme.AppSize
 import com.example.wallgodds.ui.theme.GrapePurple
 import com.example.wallgodds.ui.theme.NavbarPurple
 import com.example.wallgodds.ui.theme.guedFontFamily
+import dev.chrisbanes.haze.HazeState
+import dev.chrisbanes.haze.HazeStyle
+import dev.chrisbanes.haze.HazeTint
+import dev.chrisbanes.haze.hazeEffect
 
 @Composable
 fun CustomNavigationBar(
+    hazeState: HazeState,
     currentDestination: NavDestination?,
     items: List<NavItem>,
     onItemClick: (NavItem) -> Unit
@@ -56,22 +62,65 @@ fun CustomNavigationBar(
             .padding(horizontal = 12.dp),
         contentAlignment = Alignment.Center,
     ) {
-        Row(
+        Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = AppPadding.Medium)
                 .height(72.dp)
                 .clip(RoundedCornerShape(AppSize.MediumCornerRadius))
-                .background(Color.White),
-            horizontalArrangement = Arrangement.SpaceEvenly,
-            verticalAlignment = Alignment.CenterVertically
         ) {
-            items.forEach { item ->
-                CustomNavigationBarItem(
-                    item = item,
-                    isSelected = currentDestination?.hierarchy?.any { it.route == item.route } == true,
-                    onItemClick = { onItemClick(item) }
-                )
+            // Layer 1 — Heavy frosted glass backdrop blur
+            Box(
+                modifier = Modifier
+                    .matchParentSize()
+                    .clip(RoundedCornerShape(23.dp))
+                    .hazeEffect(
+                        state = hazeState,
+                        style = HazeStyle(
+                            blurRadius = 32.dp,
+                            noiseFactor = 0.0f,
+                            tints = listOf(
+                                HazeTint(
+                                    color = Color.White.copy(alpha = 0.38f)
+                                )
+                            )
+                        )
+                    )
+            )
+
+            // Layer 2 — Frosted gradient overlay & visible border
+            Box(
+                modifier = Modifier
+                    .matchParentSize()
+                    .background(
+                        brush = Brush.verticalGradient(
+                            colors = listOf(
+                                Color.White.copy(alpha = 0.22f),
+                                Color.White.copy(alpha = 0.12f)
+                            )
+                        ),
+                        shape = RoundedCornerShape(23.dp)
+                    )
+                    .border(
+                        width = 1.dp,
+                        color = Color.White.copy(alpha = 0.40f),
+                        shape = RoundedCornerShape(23.dp)
+                    )
+            )
+
+            // Content Row
+            Row(
+                modifier = Modifier.fillMaxSize(),
+                horizontalArrangement = Arrangement.SpaceEvenly,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                items.forEach { item ->
+                    CustomNavigationBarItem(
+                        item = item,
+                        isSelected = currentDestination?.hierarchy?.any { it.route == item.route } == true,
+                        onItemClick = { onItemClick(item) }
+                    )
+                }
             }
         }
     }
@@ -114,7 +163,7 @@ fun CustomNavigationBarItem(
     } else Modifier
 
     val selectedBackgroundColor by animateColorAsState(
-        targetValue = if(isSelected) NavbarPurple else Color.White,
+        targetValue = if(isSelected) NavbarPurple else Color.Transparent,
         animationSpec = tween(durationMillis = 500)
     )
 
