@@ -20,6 +20,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.compose.runtime.remember
 import com.example.wallgodds.navigation.CustomNavigationBar
 import com.example.wallgodds.navigation.Routes
 import com.example.wallgodds.navigation.listOfNavItems
@@ -28,6 +29,8 @@ import com.example.wallgodds.screens.HomePage
 import com.example.wallgodds.screens.ProfilePageScreen
 import com.example.wallgodds.screens.UploadPage
 import com.example.wallgodds.ui.theme.WallGoddsTheme
+import dev.chrisbanes.haze.HazeState
+import dev.chrisbanes.haze.hazeSource
 
 
 class MainActivity : ComponentActivity() {
@@ -46,6 +49,7 @@ class MainActivity : ComponentActivity() {
                 val navController = rememberNavController()
                 val navBackStackEntry by navController.currentBackStackEntryAsState()
                 val currentDestination = navBackStackEntry?.destination
+                val hazeState = remember { HazeState() }
 
                 NavHost(
                     navController = navController,
@@ -70,6 +74,7 @@ class MainActivity : ComponentActivity() {
                     floatingActionButton = {
                         if (navBackStackEntry?.destination?.route in listOfNavItems.map { it.route }) {
                             CustomNavigationBar(
+                                hazeState = hazeState,
                                 currentDestination = currentDestination,
                                 items = listOfNavItems,
                                 onItemClick = { item ->
@@ -87,7 +92,9 @@ class MainActivity : ComponentActivity() {
                     floatingActionButtonPosition = FabPosition.Center,
                 ) { innerPadding ->
                     Box(
-                        modifier = Modifier.fillMaxSize(),
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .hazeSource(state = hazeState),
                     ) {
                         Image(
                             painter = painterResource(id = R.drawable.background),

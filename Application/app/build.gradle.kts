@@ -56,9 +56,9 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation(libs.androidx.compose.ui.graphics)
+
     implementation(libs.androidx.browser)
-    implementation(libs.ui.graphics)
+
     implementation("io.coil-kt:coil-compose:2.5.0")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
@@ -74,4 +74,7 @@ dependencies {
     // Material Extended
     implementation("androidx.compose.material:material-icons-core:1.7.8")
     implementation("androidx.compose.material:material-icons-extended:1.7.8")
+
+    // Haze — real backdrop blur for frosted glass effect
+    implementation("dev.chrisbanes.haze:haze:1.7.2")
 }
